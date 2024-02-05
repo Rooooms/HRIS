@@ -1,0 +1,10 @@
+.employee-photo img {
+    max-width: 30%;
+    height: auto;
+}
+.employee-photo{
+    margin-bottom: 30px;
+}
+.card{
+    text-align: center;
+}

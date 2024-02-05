@@ -1,0 +1,23 @@
+<!-- login.component.html -->
+
+<div class="login-container">
+    <mat-card class="login-card">
+      <div class="logo-container">
+        <!-- Replace 'your-logo-path' with the path to your logo image -->
+        <img src="assets/Photo/ramlogow.png" alt="Logo" class="logo-image">
+      </div>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="input-field">
+          <input matInput formControlName="employeeNumber" placeholder="User Name">
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input matInput formControlName="password" type="password" placeholder="Password">
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" class="login-button" type="submit">Login</button>
+      </form>
+    </mat-card>
+  </div>
+  

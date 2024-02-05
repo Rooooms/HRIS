@@ -1,0 +1,72 @@
+<div mat-dialog-content>
+  <div class="ng-container">
+    <div>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">
+        <mat-icon>keyboard_backspace</mat-icon> Back
+      </button>
+    </div>
+    <form [formGroup]="apexMerchDetails" (ngSubmit)="onFormSubmit()">
+    <mat-tab-group>
+      <mat-tab label="APEX MERCHANDISE">
+        
+        <div class="requirement-section">
+          <div class="row">
+            <div fxFlex=20%>
+              <div class="form">
+                <mat-checkbox formControlName="isRAM" class="checkbox">RAM</mat-checkbox>
+              </div>
+              <div class="form">
+                <mat-checkbox formControlName="isMitra" class="checkbox">Mitra</mat-checkbox>
+              </div>
+              <div class="form">
+                <mat-checkbox formControlName="isSevilla" class="checkbox">Sevilla</mat-checkbox>
+              </div>
+              <div class="form">
+                <mat-checkbox formControlName="isVar" class="checkbox">Var</mat-checkbox>
+              </div>
+              <div class="form">
+                <mat-checkbox formControlName="isInfini" class="checkbox">Infini</mat-checkbox>
+              </div>
+            </div>
+            <div fxFlex=80%>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>RAM Percent</mat-label>
+                  <input matInput formControlName="ramPercent" [disabled]="!apexMerchDetails.get('isRAM')!.value">
+                </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Number of Outlet</mat-label>
+                  <input matInput formControlName="noOutlet" [disabled]="!apexMerchDetails.get('isMitra')!.value">
+                </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Sevilla Percent</mat-label>
+                  <input matInput formControlName="sevPercent" [disabled]="!apexMerchDetails.get('isSevilla')!.value">
+                </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Var Amount</mat-label>
+                  <input matInput formControlName="varAmount" [disabled]="!apexMerchDetails.get('isInfini')!.value">
+                </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Infini Amount</mat-label>
+                  <input matInput formControlName="infiniAmount" [disabled]="!apexMerchDetails.get('isRAM')!.value">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  </form>
+  </div>
+
+</div>

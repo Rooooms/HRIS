@@ -1,0 +1,277 @@
+
+<form [formGroup]="personalData" (ngSubmit)="onSubmit()">
+<section class="personal-info-section">
+  <div fxLayout="row">
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Place of Birth</mat-label>
+          <input matInput formControlName="pob">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Sex</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Religion</mat-label>
+          <input matInput formControlName="religion">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Citizenship</mat-label>
+          <input matInput formControlName="citizenship">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Civil Status</mat-label>
+          <input matInput formControlName="civilStat">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Email Address</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="personal-info-section">
+  <div fxLayout="row">
+    <div fxFlex="70%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>City Address</mat-label>
+          <input matInput formControlName="cityAddress">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Provincial Address</mat-label>
+          <input matInput formControlName="provAddress">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="30%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Mobile Number</mat-label>
+          <input type="tel" matInput placeholder="(+63)9XX-XXXX-XXX" formControlName="mobileNum">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Telephone</mat-label>
+          <input type="tel" matInput placeholder="(02)XXXXXXXX" formControlName="telNum">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Spouse Name</mat-label>
+          <input matInput formControlName="spouseName">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="30%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Spouse Occupation</mat-label>
+          <input matInput formControlName="spouseOccupation">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="20%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Spouse Age</mat-label>
+          <input matInput formControlName="spouseAge">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="children-section">
+    <div fxLayout="row">
+      <div fxFlex="50%">
+        <div class="form">
+          <mat-form-field class="full-width">
+            <mat-label>Children</mat-label>
+            <input matInput formControlName="childName">
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxFlex="50%">
+        <div class="form">
+          <mat-form-field class="full-width">
+            <mat-label>Children Age</mat-label>
+            <input matInput formControlName="childAge">
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a>Add Another field</a>
+
+  <div fxLayout="row">
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Father Name</mat-label>
+          <input matInput formControlName="fatherName">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Mother Name</mat-label>
+          <input matInput formControlName="motherName">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="30%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Father Occupation</mat-label>
+          <input matInput formControlName="fatherOccupation">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Mother Occupation</mat-label>
+          <input matInput formControlName="motherOccupation">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="20%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Father Age</mat-label>
+          <input matInput formControlName="fatherAge">
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Mother Age</mat-label>
+          <input matInput formControlName="motherAge">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+        <div fxFlex="30%">
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Sibling Name</mat-label>
+                  <input matInput id="sibling">
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="15%">
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Sibling Age</mat-label>
+                  <input matInput id="siblingAge">
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="15%">
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Civil Status</mat-label>
+                  <input matInput id="siblingCivilStatus">
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="20%">
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Sibling Occupation</mat-label>
+                  <input matInput id="siblingOccupation">
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="20%">
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Company</mat-label>
+                  <input matInput id="siblingCompany">
+                </mat-form-field>
+              </div>
+        </div>
+     </div> -->
+  <div class="form">
+    <mat-form-field class="form-full-width">
+      <mat-label>Language and dialect spoken and/or writter (use "," for concatenation)</mat-label>
+      <input matInput formControlName="language">
+    </mat-form-field>
+  </div>
+  <div class="form">
+    <mat-form-field class="form-full-width">
+      <mat-label>Have you taken a recent physical examination? If so, when?</mat-label>
+      <input matInput formControlName="medical">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <div fxFlex="30%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Purpose</mat-label>
+          <input matInput formControlName="medicalPurpose">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="30%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Result</mat-label>
+          <input matInput formControlName="medicalResult">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="40%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>
+            Major Illness for the past 5 years</mat-label>
+          <input matInput formControlName="majorIllness">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>
+            Emergency Person Name</mat-label>
+          <input matInput formControlName="emerPerson">
+        </mat-form-field>
+      </div>
+    </div>
+    <div fxFlex="50%">
+      <div class="form">
+        <mat-form-field class="full-width">
+          <mat-label>
+            Emergency Person Name</mat-label>
+          <input matInput formControlName="emerPersonNumber">
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</section>
+</form>

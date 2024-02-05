@@ -1,0 +1,30 @@
+<div class="add-employee">
+    <mat-dialog-actions fxLayout="row" fxLayoutAlign="end">
+      <button mat-raised-button color="primary" (click)="openAddDialog()">
+        <mat-icon>add</mat-icon>Add Book
+      </button>
+    </mat-dialog-actions>
+  </div>
+  <div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+     
+      <ng-container matColumnDef="bookName">
+        <th mat-header-cell *matHeaderCellDef> Book Name </th>
+        <td mat-cell *matCellDef="let details" (click)="openEditForm(details)"> {{details.bookName}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef> Author </th>
+        <td mat-cell *matCellDef="let details"> {{details.author}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let details">
+          <button class="btna" mat-icon-button color="basic" (click)="openEditForm(details)"><mat-icon>edit</mat-icon></button>
+          <button class="btna" mat-icon-button color="warn" ><mat-icon>delete</mat-icon></button>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

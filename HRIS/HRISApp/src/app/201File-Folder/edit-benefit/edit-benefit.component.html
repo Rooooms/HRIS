@@ -1,0 +1,49 @@
+<div mat-dialog-content>
+    <div class="ng-container">
+  
+      <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+          <mat-icon>keyboard_backspace</mat-icon> Back
+        </button>
+      </div>
+  
+      <div class="ng-container">
+        <form [formGroup]="benefitDetails" (ngSubmit)="onFormSubmit()">
+      <div class="employment-section">
+        
+        <div class="row">
+          <div fxFlex="33.33%">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Benefit Name</mat-label>
+                <mat-select formControlName="benefitName">
+                  <mat-option value="Transportation Allowance">Transportation Allowance</mat-option>
+                  <mat-option value="Food Allowance">Food Allowance</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div fxFlex="33.33%">
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Benefit Ammount</mat-label>
+                  <input matInput formControlName="benefitAmount">
+                  </mat-form-field>
+              </div>
+          </div>
+          <div fxFlex="33.33%">
+            <mat-form-field class="full-width">
+              <mat-label>Date Given</mat-label>
+              <input matInput [matDatepicker]="dateGiven" formControlName="dateGiven">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="dateGiven"></mat-datepicker-toggle>
+              <mat-datepicker #dateGiven></mat-datepicker>
+            </mat-form-field>  
+        </div>
+      </div>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+          <button mat-raised-button type="submit" color="primary">Save</button>
+      </div>
+      </form>
+      </div>
+  </div>

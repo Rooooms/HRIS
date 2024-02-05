@@ -1,0 +1,136 @@
+<div mat-dialog-content>
+
+
+  <div class="ng-container">
+    <div>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">
+        <mat-icon>keyboard_backspace</mat-icon> Back
+      </button>
+    </div>
+    <form [formGroup]="requirementDetails" (ngSubmit)="onFormSubmit()">
+      <mat-tab-group>
+        <mat-tab label="Requirements">
+          <div class="header">
+            <h4>PRE EMPLOYMENT REQUIREMENTS</h4>
+          </div>
+          <div class="requirement-section">
+            <div class="row">
+              <div fxFlex="50%">
+                <div class="form">
+                  <mat-checkbox formControlName="isPolygraph" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Polygraph</mat-label>
+                    <input matInput formControlName="polygraph" [disabled]="!requirementDetails.get('isPolygraph')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isPhyExam" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Physical Examination</mat-label>
+                    <input matInput formControlName="phyExam" [disabled]="!requirementDetails.get('isPhyExam')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isSSSNo" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>SSS Number</mat-label>
+                    <input matInput formControlName="sssNo" [disabled]="!requirementDetails.get('isSSSNo')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isResidentCert" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Residence Certificate</mat-label>
+                    <input matInput formControlName="residentCert" [disabled]="!requirementDetails.get('isResidentCert')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isTOR" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Transcript of Record</mat-label>
+                    <input matInput formControlName="tor" [disabled]="!requirementDetails.get('isTOR')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isDrvLicense" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Drivers License</mat-label>
+                    <input matInput formControlName="drvLicense" [disabled]="!requirementDetails.get('isDrvLicense')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isEmpCert" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Employment Certificate</mat-label>
+                    <input matInput formControlName="empCert" [disabled]="!requirementDetails.get('isEmpCert')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isITR" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>ITR (Form 2816)</mat-label>
+                    <input matInput formControlName="itr" [disabled]="!requirementDetails.get('isITR')!.value">
+                  </mat-form-field>
+                </div>
+
+              </div>
+              <div fxFlex="50%">
+                <div class="form">
+                  <mat-checkbox formControlName="isTinNo" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>TIN</mat-label>
+                    <input matInput formControlName="tinNo" [disabled]="!requirementDetails.get('isTinNo')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isPhilhealthNo" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Philhealth Number</mat-label>
+                    <input matInput formControlName="philhealthNo" [disabled]="!requirementDetails.get('isPhilhealthNo')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isPagibig" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Pag-ibig Number</mat-label>
+                    <input matInput formControlName="pagibigNo" [disabled]="!requirementDetails.get('isPagibig')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isNbi" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>NBI Clearance</mat-label>
+                    <input matInput formControlName="nbi" [disabled]="!requirementDetails.get('isNbi')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isMarriageCert" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Marriage Certificate (if married)</mat-label>
+                    <input matInput formControlName="marriageCert" [disabled]="!requirementDetails.get('isMarriageCert')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isPic" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>2x2 Picture</mat-label>
+                    <input matInput formControlName="pic" [disabled]="!requirementDetails.get('isPic')!.value">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                  <mat-checkbox formControlName="isClearance" class="checkbox"></mat-checkbox>
+                  <mat-form-field class="full-width">
+                    <mat-label>Clearance from Previous Employer</mat-label>
+                    <input matInput formControlName="clearance" [disabled]="!requirementDetails.get('isClearance')!.value">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+    </form>
+  </div>
+</div>

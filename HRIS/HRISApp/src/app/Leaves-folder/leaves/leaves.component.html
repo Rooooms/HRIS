@@ -1,0 +1,71 @@
+<div class="ng-container">
+    <div class="header">
+        <h2>Leave Request (Managerial Approval)</h2>
+    </div>
+
+    <div class="row">
+        <div fxFlex="50%">
+            <div class="message">
+                <div class="note">
+                    <h2>Note:</h2>
+                </div>
+                <div class="text">
+                    <p>Managerial Approval:
+                        Welcome to the Managerial Approval section,
+                        where you can conveniently submit and monitor leave requests.
+                        This area has been specifically designed to facilitate seamless
+                        communication between employees and managers.
+                        Once you've submitted your leave request,
+                        check back <a routerLink="/Dashboard/leavelist">here</a> to keep track of its status and await managerial approval.
+                        Your manager will review and respond promptly, ensuring a streamlined and
+                        efficient process for managing leave requests within our company.</p>
+                </div>
+                <div class="text">
+                    <p>Important Notice:
+                        Kindly note that approved leave will only
+                        be deducted from your Paid Time Off (PTO)
+                        balance if you have sufficient leave credits
+                        available at the time of approval.
+                        Your diligent management of leave credits ensures
+                        accurate record-keeping and smooth processing of time-off requests.
+                        Thank you for your attention to this matter</p>
+                </div>
+            </div>
+        </div>
+
+        <div fxFlex="50%">
+            <mat-card class="form">
+                <form [formGroup]="leavelist" (ngSubmit)="onformSubmit()">
+                    <div>
+                        <mat-form-field class="full-width">
+                            <mat-label>Enter a date range</mat-label>
+                            <mat-date-range-input [rangePicker]="picker">
+                                <input matStartDate placeholder="Start date" formControlName="leaveStartDate">
+                                <input matEndDate placeholder="End date" formControlName="leaveEndDate">
+                            </mat-date-range-input>
+                            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width">
+                            <mat-label>Reason</mat-label>
+                            <mat-select formControlName="reason">
+                                <mat-option value="Vacation Leave">Vacation Leave</mat-option>
+                                <mat-option value="Sick Leave">Sick Leave</mat-option>
+                                <mat-option value="Emergency Leave">Emergency Leave</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+
+
+
+
+                    </div>
+                    <button mat-raised-button type="submit" color="primary">Submit</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

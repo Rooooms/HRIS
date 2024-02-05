@@ -1,0 +1,42 @@
+<div class="ng-container">
+    <div class="row">
+        <div fxFlex="50%">
+          <button mat-raised-button color="primary" (click)="openadd201Form(data)"><mat-icon>person</mat-icon>Employment and Personal Data</button>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="edubgMenu">
+                <mat-icon>school</mat-icon>
+                Educational Background</button>
+                <mat-menu #edubgMenu="matMenu">
+                    <button mat-menu-item (click)="onEmployeeSelected(data)">Add</button>
+                    <button mat-menu-item (click)="onEmployeeEditSelected(data)">Edit</button>
+                  </mat-menu>
+            <button mat-raised-button color="primary" (click)="onEmployeeProfile(data)"><mat-icon>assignment_ind</mat-icon>Employee Profile</button>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="paymastMenu"><mat-icon>credit_card</mat-icon>Paymast</button>
+            <mat-menu #paymastMenu="matMenu">
+                <button mat-menu-item (click)="onPaymastSelected(data)">Add</button>
+                <button mat-menu-item (click)="onPaymastEditSelected(data)">Edit</button>
+              </mat-menu>
+        </div>
+        <div fxFlex="50%">
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="empbgMenu"><mat-icon>building</mat-icon>Employment Background</button>
+            <mat-menu #empbgMenu="matMenu">
+                <button mat-menu-item (click)="onEmploymentbgSelected(data)">Add</button>
+                <button mat-menu-item (click)="onEmploymentbgEditSelected(data)">Edit</button>
+              </mat-menu>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="requirementMenu"><mat-icon>file_copy</mat-icon>Requirements</button>
+            <mat-menu #requirementMenu="matMenu">
+                <button mat-menu-item (click)="onRequirementSelected(data)">Add</button>
+                <button mat-menu-item (click)="onRequirementEditSelected(data)">Edit</button>
+              </mat-menu>
+            <button mat-raised-button color="primary" [matMenuTriggerFor]="benefitMenu"><mat-icon>local_play</mat-icon>Benefits</button>
+            <mat-menu #benefitMenu="matMenu">
+                <button mat-menu-item (click)="onBenefitAdd(data)">Add Benefit</button>
+                <button mat-menu-item (click)="onBenefitViewandEdit(data)">View or Edit</button>
+              </mat-menu>
+              <button mat-raised-button color="primary" [matMenuTriggerFor]="apexMerchMenu" [disabled]="!isMerchandiser"><mat-icon>shopping_cart</mat-icon>Apex Merchandise</button>
+              <mat-menu #apexMerchMenu="matMenu">
+                <button mat-menu-item (click)="openaddApexMerch(data)">Add</button>
+                <button mat-menu-item (click)="onBenefitViewandEdit(data)">View or Edit</button>
+              </mat-menu>
+        </div>
+    </div>
+</div>

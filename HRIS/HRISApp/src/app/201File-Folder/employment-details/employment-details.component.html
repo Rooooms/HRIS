@@ -1,0 +1,131 @@
+<div class="employment-details-section" >
+  <form [formGroup]="employeeDetails" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div fxFlex="25%">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Employee Status</mat-label>
+                <input matInput id="employeeStatus">
+                </mat-form-field>
+            </div>
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Off In</mat-label>
+                  <input matInput id="offIn">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>CC Number</mat-label>
+                  <input matInput id="ccNo">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>No of Days Per Year</mat-label>
+                  <input matInput id="noOfDays">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>User Level</mat-label>
+                  <mat-select id="userLevel">
+                    <mat-option value="Option 1">Option 1</mat-option>
+                    <mat-option value="Option 2">Option 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="25%">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Status Description</mat-label>
+                <input matInput id="statusDesc">
+                </mat-form-field>
+            </div>
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Off Out</mat-label>
+                  <input matInput id="offOut">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Adjustment</mat-label>
+                  <input matInput id="adjustment">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Pay Type</mat-label>
+                  <mat-select id="payType">
+                    <mat-option value="Option 1">Option 1</mat-option>
+                    <mat-option value="Option 2">Option 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="25%">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Work Days</mat-label>
+                <input type="number" matInput id="workDays">
+                </mat-form-field>
+            </div>
+            <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Base Flag</mat-label>
+                  <mat-select id="baseFlag">
+                    <mat-option value="Option 1">Option 1</mat-option>
+                    <mat-option value="Option 2">Option 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Region</mat-label>
+                  <input matInput id="region">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Schedule</mat-label>
+                  <mat-select id="schedule">
+                    <mat-option value="Option 1">Option 1</mat-option>
+                    <mat-option value="Option 2">Option 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+        </div>
+        <div fxFlex="25%">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Plate Number</mat-label>
+                <input matInput id="plateNo">
+                </mat-form-field>
+            </div>
+            <div class="form">
+            <mat-form-field class="full-width">
+                <mat-label>Effective Date</mat-label>
+                <input matInput [matDatepicker]="effDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="effDate"></mat-datepicker-toggle>
+                <mat-datepicker #effDate></mat-datepicker>
+              </mat-form-field>  
+            </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Check DGT</mat-label>
+                  <input matInput id="checkDGT">
+                  </mat-form-field>
+              </div>
+              <div class="form">
+                <mat-form-field class="full-width">
+                  <mat-label>Rate</mat-label>
+                  <input matInput id="rate">
+                  </mat-form-field>
+              </div>
+        </div>
+    </div>
+  </form>
+</div>

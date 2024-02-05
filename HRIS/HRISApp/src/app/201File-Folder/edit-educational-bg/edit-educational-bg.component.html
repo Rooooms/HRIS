@@ -1,0 +1,133 @@
+<div mat-dialog-content>
+    <div class="ng-container">
+    
+      <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+            <mat-icon>keyboard_backspace</mat-icon> Back
+          </button>
+    </div>
+        
+        <form [formGroup]="educationalDetails" (ngSubmit)="onFormSubmit()">
+          <mat-tab-group>
+            <mat-tab label="Educational Background">
+        <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>Degree/Course</mat-label>
+              <input matInput formControlName="degree">
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>Graduate School</mat-label>
+              <input matInput formControlName="gradSchool">
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>Licenses earned and held</mat-label>
+              <input matInput formControlName="license">
+            </mat-form-field>
+          </div>
+    
+          <h4>Elementary : </h4>
+          <div class="row">
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Name of Institution</mat-label>
+                    <input matInput formControlName="elemInstitute">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Location</mat-label>
+                      <input matInput formControlName="elemLoc">
+                    </mat-form-field>
+                  </div>
+            </div>
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Inclusive Date</mat-label>
+                    <input matInput formControlName="elemDateInc">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Honor/Award Attained</mat-label>
+                      <input matInput formControlName="elemAchievement">
+                    </mat-form-field>
+                  </div>
+            </div>
+          </div>
+          <h4>High School : </h4>
+          <div class="row">
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Name of Institution</mat-label>
+                    <input matInput formControlName="hsInstitute">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Location</mat-label>
+                      <input matInput formControlName="hsLoc">
+                    </mat-form-field>
+                  </div>
+            </div>
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Inclusive Date</mat-label>
+                    <input matInput formControlName="hsDateInc">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Honor/Award Attained</mat-label>
+                      <input matInput formControlName="hsAchievement">
+                    </mat-form-field>
+                  </div>
+            </div>
+          </div>
+          <h4>Tertiary : </h4>
+          <div class="row">
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Name of Institution</mat-label>
+                    <input matInput formControlName="terInstitute">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Location</mat-label>
+                      <input matInput formControlName="terLoc">
+                    </mat-form-field>
+                  </div>
+            </div>
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Inclusive Date</mat-label>
+                    <input matInput formControlName="terDateInc">
+                  </mat-form-field>
+                </div>
+                <div class="form">
+                    <mat-form-field class="full-width">
+                      <mat-label>Honor/Award Attained</mat-label>
+                      <input matInput formControlName="terAchievement">
+                    </mat-form-field>
+                  </div>
+            </div>
+          </div>
+        </mat-tab>
+        </mat-tab-group>
+        
+    
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button type="submit" color="primary">Edit</button>
+      </form>
+    </div>
+    </div>

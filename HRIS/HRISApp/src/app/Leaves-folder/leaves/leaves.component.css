@@ -1,0 +1,24 @@
+.full-width{
+    width:90%;
+    padding: 30px;
+}
+.form{
+    margin-top: 140px;
+}
+.form button{
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 100px;
+}
+
+.message{
+    padding: 30px;
+    margin-top: 70px;
+}
+.note h4{
+    font-weight: bold;
+}
+.text p{
+    font-size: 20px;
+    text-align: justify;
+}

@@ -1,0 +1,177 @@
+<div mat-dialog-content>
+    <div class="ng-container">
+      <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+          <mat-icon>keyboard_backspace</mat-icon> Back
+        </button>
+      </div>
+      <!-- <div *ngFor="let empContainer of empContainers" class="emp-bg-container"> -->
+      <form [formGroup]="paymastDetails" (ngSubmit)="onFormSubmit()">
+        <mat-tab-group>
+          <mat-tab label="Employment Background">
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Fix Tax Rate</mat-label>
+                <input matInput formControlName="fixTaxRate">
+              </mat-form-field>
+            </div>
+            <div class="content">
+              <h4>Base</h4>
+            </div>
+            <div class="row">
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Monthly</mat-label>
+                    <input matInput formControlName="baseMonthly">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>15th</mat-label>
+                    <input matInput formControlName="base15th">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Month End</mat-label>
+                    <input matInput formControlName="baseMonthEnd">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+              <h4>Cola</h4>
+            </div>
+            <div class="row">
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Monthly</mat-label>
+                    <input matInput formControlName="colaMonthly">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>15th</mat-label>
+                    <input matInput formControlName="cola15th">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Month End</mat-label>
+                    <input matInput formControlName="colaMonthEnd">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+  
+            <div class="content">
+              <h2>Pag-Ibig Premium</h2>
+            </div>
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Employer Share</mat-label>
+                <input matInput formControlName="empShare">
+              </mat-form-field>
+            </div>
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Medicine Allowance</mat-label>
+                <input matInput formControlName="medAllowance">
+              </mat-form-field>
+            </div>
+            <div class="form">
+              <mat-form-field class="full-width">
+                <mat-label>Daily Share</mat-label>
+                <input matInput formControlName="dailyShare">
+              </mat-form-field>
+            </div>
+  
+            <div class="content">
+              <h2>Dependents</h2>
+            </div>
+  
+            <div class="row">
+              <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Dependent Name</mat-label>
+                    <input matInput formControlName="depName">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Dependent Birthday</mat-label>
+                    <input matInput [matDatepicker]="depBirthday" formControlName="depBirthday">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="depBirthday"></mat-datepicker-toggle>
+                    <mat-datepicker #depBirthday></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>CTC Number</mat-label>
+                    <input matInput formControlName="ctcNo">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Date Issued</mat-label>
+                    <input matInput [matDatepicker]="dateIssue" formControlName="dateIssue">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dateIssue"></mat-datepicker-toggle>
+                    <mat-datepicker #dateIssue></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div fxFlex="33.33%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Rate Type</mat-label>
+                    <mat-select formControlName="rateType">
+                      <mat-option value="Option 1">Option 1</mat-option>
+                      <mat-option value="Option 2">Option 2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="form">
+              <mat-form-field class="form-full-width">
+                <mat-label>Place Issued</mat-label>
+                <input matInput formControlName="placeIssue">
+              </mat-form-field>
+            </div>
+            <div class="form">
+              <mat-form-field class="form-full-width">
+                <mat-label>Payslip Pin Number</mat-label>
+                <input matInput formControlName="payslipPinNo">
+              </mat-form-field>
+            </div>
+            <mat-checkbox formControlName="excPayrollProcess" class="checkbox">Exclude in payroll process</mat-checkbox>
+          </mat-tab>
+        </mat-tab-group>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button type="submit" color="primary">Save</button>
+  
+      </form>
+    </div>
+  </div>

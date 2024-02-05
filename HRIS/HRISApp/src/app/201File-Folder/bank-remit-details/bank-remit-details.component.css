@@ -1,0 +1,10 @@
+.full-width{
+    width: 95%;
+}
+.form-full-width{
+    width: 100%;
+}
+.checkbox p{
+    font-weight: bold;
+    margin-top: 10px;
+}

@@ -1,0 +1,50 @@
+<div mat-dialog-content>
+    <div class="ng-container">
+  
+      <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+          <mat-icon>keyboard_backspace</mat-icon> Back
+        </button>
+      </div>
+
+      <div class="user">
+        <p>List of benefit of {{employee.fName + ' ' + employee.lName}}</p>
+      </div>
+
+      
+<div class="table-container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="benefitName">
+            <th mat-header-cell *matHeaderCellDef> Benefit Name </th>
+            <td mat-cell *matCellDef="let row"> {{ row.benefitName }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="benefitAmount">
+            <th mat-header-cell *matHeaderCellDef> Benefit Amount </th>
+            <td mat-cell *matCellDef="let row"> {{ row.benefitAmount }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dateGiven">
+            <th mat-header-cell *matHeaderCellDef> Date Given </th>
+            <td mat-cell *matCellDef="let row"> {{ row.dateGiven }} </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let row">
+                <button class="btna" mat-icon-button color="basic" (click)="editBenefit(row)"><mat-icon>edit</mat-icon></button>
+                <button class="btna" mat-icon-button color="warn" (click)="deleteBenefit(row.id)"><mat-icon>delete</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <!-- Header row definition -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <!-- Row definitions -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+</div>
+</div>

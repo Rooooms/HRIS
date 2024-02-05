@@ -1,0 +1,55 @@
+<div class="header">
+    <h1>Leave Details : </h1>
+</div>
+
+<div class="ng-container">
+    <div class="row">
+        <div fxFlex="40%">
+            <mat-card class="card">
+                <p><strong>Company:</strong> {{ data.company }}</p>
+                <p><strong>Branch:</strong> {{ data.branch }}</p>
+                <p><strong>Department</strong> {{ data.department }}</p>
+                <p><strong>Employee Name:</strong> {{ data.employeeName }}</p>
+                <p><strong>Employee Number:</strong> {{ data.employeeNumber }}</p>
+            </mat-card>
+        </div>
+        <div fxFlex="60%">
+            <mat-card class="form-card">
+                <form [formGroup]="leavelist" (ngSubmit)="onFormSubmit()">
+                    <mat-form-field class="full-width">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate placeholder="Start date" formControlName="leaveStartDate">
+                            <input matEndDate placeholder="End date" formControlName="leaveEndDate">
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label>Reason</mat-label>
+                        <mat-select formControlName="reason">
+                            <mat-option value="Vacation Leave">Vacation Leave</mat-option>
+                            <mat-option value="Sick Leave">Sick Leave</mat-option>
+                            <mat-option value="Emergency Leave">Emergency Leave</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status">
+                          <mat-option value="Requested">Requested</mat-option>
+                          <mat-option value="Cancelled">Cancel</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      
+
+                      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                        <button mat-raised-button type="submit" color="primary">Ok</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

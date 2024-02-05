@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+    <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+            <mat-icon>keyboard_backspace</mat-icon> Back
+          </button>
+    </div>
+    <form [formGroup]="employeeDetails" (ngSubmit)="onFormSubmit()">
+    <mat-tab-group>
+        <mat-tab label="Employment">
+            <app-employment (formSubmitted)="onEmployeeDetails($event)"></app-employment>
+        </mat-tab>
+        <mat-tab label="Personal Data"> 
+            <app-data-personal (formSubmitted)="onPersonalDetails($event)"></app-data-personal>                                    
+        </mat-tab>
+    </mat-tab-group>
+    <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+    </form>
+</div>

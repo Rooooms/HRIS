@@ -1,0 +1,17 @@
+.full-width{
+    width: 80%;
+}
+.form-full-width{
+    width: 100%;
+}
+.header h4{
+    text-align: center;
+    font-weight: bold;
+}
+.form .checkbox{
+    padding: 18px;
+}
+.form .checkbox .label{
+    font-size: 16px;
+    font-weight: 500;
+}

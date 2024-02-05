@@ -1,0 +1,82 @@
+<div mat-dialog-content>
+    <div class="ng-container">
+      <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+            <mat-icon>keyboard_backspace</mat-icon> Back
+          </button>
+    </div>
+        <!-- <div *ngFor="let empContainer of empContainers" class="emp-bg-container"> -->
+          <form [formGroup]="employmentBgDetails" (ngSubmit)="onFormSubmit()">
+            <mat-tab-group>
+              <mat-tab label="Employment Background">
+        <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>Name of the Company/Employer</mat-label>
+              <input matInput formControlName="prevCompany">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Position Held</mat-label>
+                    <input matInput formControlName="prevPosition">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Nature of Business</mat-label>
+                    <input matInput formControlName="natOfBusiness">
+                  </mat-form-field>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div fxFlex="50%">
+                <div class="form">
+                  <mat-form-field class="full-width">
+                    <mat-label>Salary</mat-label>
+                    <input matInput formControlName="prevSalary">
+                  </mat-form-field>
+                </div>
+            </div>
+            <div fxFlex="50%">
+                <div class="form">
+                    <mat-form-field class="form-full-width">
+                      <mat-label>Inclusive Date</mat-label>
+                      <input matInput formControlName="incDate">
+                    </mat-form-field>
+                  </div>
+            </div>
+          </div>
+          <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>Description of work and responsibilities</mat-label>
+              <input matInput formControlName="jobDescription">
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>What aspect(s) in your job did you like the most? The least? What is/are the reason for leaving?</mat-label>
+              <input matInput formControlName="reasOfLeave">
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field class="form-full-width">
+              <mat-label>What was your most significant contribution to the company?</mat-label>
+              <input matInput formControlName="contribution">
+            </mat-form-field>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+     <button mat-raised-button type="submit" color="primary">Edit</button>
+       
+        </form>
+        <!-- <button mat-raised-button color="primary" (click)="addAnotherField()">
+            <mat-icon>add</mat-icon>Add Another Field
+          </button> -->
+    </div>
+    </div>

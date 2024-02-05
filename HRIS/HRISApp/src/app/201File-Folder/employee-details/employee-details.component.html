@@ -1,0 +1,30 @@
+
+<div mat-dialog-content>
+<div class="ng-container">
+    <div>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">
+            <mat-icon>keyboard_backspace</mat-icon> Back
+        </button>
+    </div>
+    <mat-card>
+        <mat-tab-group>
+            <mat-tab label="Employment Background">
+        <mat-card-content>
+            
+            <div class="card">
+                <div class="employee-photo">
+                    <img src="assets/Photo/700674.png" alt="" />
+                </div>
+                <div class="employee-details">
+                    <p>Employee Name: {{ employeeData.fName }} {{ employeeData.mName }} {{ employeeData.lName }}</p>
+                    <p>Employee Number: {{ employeeData.employeeNumber }}</p>
+                    <p>CC No: {{ employeeData.ccNo }}</p>
+                </div>
+            </div>
+        
+        </mat-card-content>
+    </mat-tab>
+</mat-tab-group>
+    </mat-card>
+</div>
+</div>
