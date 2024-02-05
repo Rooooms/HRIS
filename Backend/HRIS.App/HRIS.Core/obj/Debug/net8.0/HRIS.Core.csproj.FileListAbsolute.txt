@@ -1,0 +1,14 @@
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\bin\Debug\net8.0\HRIS.Core.deps.json
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\bin\Debug\net8.0\HRIS.Core.runtimeconfig.json
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\bin\Debug\net8.0\HRIS.Core.dll
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\bin\Debug\net8.0\HRIS.Core.pdb
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.csproj.AssemblyReference.cache
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.AssemblyInfoInputs.cache
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.AssemblyInfo.cs
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.csproj.CoreCompileInputs.cache
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.dll
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\refint\HRIS.Core.dll
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.pdb
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\HRIS.Core.genruntimeconfig.cache
+C:\Users\RSANDRINO\source\repos\HRIS\HRIS.App\HRIS.Core\obj\Debug\net8.0\ref\HRIS.Core.dll
