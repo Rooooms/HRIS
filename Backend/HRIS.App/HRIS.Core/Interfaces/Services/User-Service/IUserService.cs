@@ -27,7 +27,7 @@ namespace HRIS.Core.Interfaces.Services.User_Service
         Task<LoginResponse> UserLogin(LoginRequest request);
         //Task<LoginResponseResult> UserLogin(LoginRequest request);
 
-
+        Task<UserResponse>Update (Guid id, UpdateUserRequest request);
         Task Logout();
     }
 }

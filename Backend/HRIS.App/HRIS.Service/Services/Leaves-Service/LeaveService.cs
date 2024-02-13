@@ -3,6 +3,7 @@ using HRIS.Core.Entities.Leave_Entities;
 using HRIS.Core.Interfaces.Repositories;
 using HRIS.Core.Interfaces.Repositories.Leaves_Repositories;
 using HRIS.Core.Interfaces.Repositories.UserRepository;
+using HRIS.Core.Interfaces.Services.EmailSender;
 using HRIS.Core.Interfaces.Services.Leave_Service;
 using HRIS.Core.Interfaces.Services.User_Service;
 using HRIS.Core.Models.Requests;
@@ -29,17 +30,22 @@ namespace HRIS.Service.Services.Leaves_Service
         public readonly ILeaveRepository _leave;
         public readonly AppDbContext _context;
         private readonly IUserRepository _user;
+        private readonly IEmailService _emailService;
 
         private readonly IUserService _userService;
 
 
-        public LeaveService(IEmployeeDetailsRepository employee, AppDbContext context, ILeaveRepository leave, IUserRepository user, IUserService userService)
+        public LeaveService(IEmployeeDetailsRepository employee,
+                            AppDbContext context, ILeaveRepository leave,
+                            IUserRepository user, 
+                            IUserService userService, IEmailService emailService)
         {
             _leave = leave;
             _context = context;
             _employee = employee;
-            _user= user;
+            _user = user;
             _userService = userService;
+            _emailService = emailService;
         }
 
         public async Task<List<LeaveResponse>> GetAll()
@@ -65,7 +71,11 @@ namespace HRIS.Service.Services.Leaves_Service
             var leaves = await _leave.GetLeavesByEmployeeNumber(employeeNumber);
             return leaves.Select(leave => leave.Adapt<LeaveResponse>()).ToList();
         }
-
+        public async Task<List<LeaveResponse>> GetLeavesByDepartment(string department)
+        {
+            var leaves = await _leave.GetLeavesByDepartment(department);
+            return leaves.Select(leave => leave.Adapt<LeaveResponse>()).ToList();
+        }
         public async Task<LeaveResponse> Create(HttpContext httpContext, LeaveRequest request)
         {
 
@@ -92,7 +102,7 @@ namespace HRIS.Service.Services.Leaves_Service
             }
 
             var employeeId = user.EmployeeId;
-            Console.WriteLine("EmployeeID", employeeId);
+            
 
             var employeeDetails = await _employee.GetById(employeeId);
 
@@ -154,47 +164,65 @@ namespace HRIS.Service.Services.Leaves_Service
             _leave.Add(leave);
 
             await _leave.SaveChangesAysnc();
+            await SendLeaveRequestEmailToManager(leave);
 
             var leaveDto = leave.Adapt<LeaveResponse>();
 
             return leaveDto;
         }
 
+        private async Task SendLeaveRequestEmailToManager(LeaveEntities leave)
+        {
+            var userType = "Manager";
+            var manager = await _user.GetByUserType(userType);
+            if (manager == null) return;
 
-        //public async Task<LeaveResponse> Update(Guid id, LeaveRequest request)
-        //{
-        //    var loggedUser = await _userService.CheckLogged();
-        //    Guid userId = loggedUser.Id;
+            if (manager.Department == leave.Department)
+            {
 
-        //    var user = await _user.GetById(userId);
+                var managerDto = await _employee.GetByEmployee(manager.EmployeeNumber);
+                if (managerDto == null) return;
 
-        //    if (user == null) return null;
+                string emailBody = $@"<p>Leave request submitted by {leave.EmployeeName}</p>
+                         <p>Date: {leave.LeaveStartDate}</p>
+                         <p>Until: {leave.LeaveEndDate}</p>
+                         <p>Reason: {leave.Reason}</p>
+                         <p>Click <a href='http://localhost:4200/Dashboard/manageleave'>here</a> for more information.</p>";
 
-        //    var employeeId = user.EmployeeId;
 
-        //    var employeeDetails = await _employee.GetById(employeeId);
-        //    if (employeeDetails == null) return null;
+                // Send email to manager
+                await _emailService.SendEmailAsync(managerDto.Email, "Leave Request Notification", emailBody);
+            }
 
-        //    var leave = await _leave.GetById(id);
+            else return;
+            
+        }
 
-        //    if (leave == null) return null;
 
-        //    // Update leave fields based on the values in the request
-        //    // Modify this section based on your actual fields and requirements
-        //    leave.Status = request.Status;
-        //    leave.Reason = request.Reason;
-        //    leave.LeaveStartDate = request.LeaveStartDate;
-        //    leave.LeaveEndDate = request.LeaveEndDate;
+        public async Task<LeaveResponse> Update(Guid id, LeaveRequest request)
+        {
 
-        //    // You may need additional logic here based on your requirements
+            
 
-        //    // Save changes to the database
-        //    await _leave.SaveChangesAysnc();
+            var leave = await _leave.GetById(id);
 
-        //    // Return the updated leave object
-        //    var leaveDto = leave.Adapt<LeaveResponse>();
-        //    return leaveDto;
-        //}
+            if (leave == null) return null;
+
+            leave.LeaveStartDate = request.LeaveStartDate;
+            leave.LeaveEndDate = request.LeaveEndDate;
+            leave.ResOfCancel = request.ResOfCancel;
+            leave.Reason = request.Reason;
+            leave.Status = request.Status;
+      
+            // You may need additional logic here based on your requirements
+
+            // Save changes to the database
+            await _leave.SaveChangesAysnc();
+
+            // Return the updated leave object
+            var leaveDto = leave.Adapt<LeaveResponse>();
+            return leaveDto;
+        }
 
 
         public async Task<bool> Delete(Guid id)

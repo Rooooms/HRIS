@@ -1,0 +1,187 @@
+<mat-tab-group>
+  <mat-tab label="Requested">
+    <div class="table-container">
+      <table mat-table [dataSource]="requestedLeavesDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="dateSubmitted">
+          <th mat-header-cell *matHeaderCellDef> Date submitted </th>
+          <td mat-cell *matCellDef="let details"> {{details.dateSubmitted}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="leaveStartDate">
+          <th mat-header-cell *matHeaderCellDef> Requested Start Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveStartDate}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="leaveEndDate">
+          <th mat-header-cell *matHeaderCellDef> Requested End Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveEndDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let details"> {{details.reason}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let details"> {{details.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Details</th>
+          <td mat-cell *matCellDef="let details">
+            <button class="btna" mat-icon-button color="basic"
+              (click)="openLeaveDetails(details)"><mat-icon>details</mat-icon></button>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="50" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-tab>
+  <mat-tab label="Approved">
+    <div class="table-container">
+      <table mat-table [dataSource]="approvedLeavesDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="dateSubmitted">
+          <th mat-header-cell *matHeaderCellDef> Date submitted </th>
+          <td mat-cell *matCellDef="let details"> {{details.dateSubmitted}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="leaveStartDate">
+          <th mat-header-cell *matHeaderCellDef> Requested Start Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveStartDate}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="leaveEndDate">
+          <th mat-header-cell *matHeaderCellDef> Requested End Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveEndDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let details"> {{details.reason}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let details"> {{details.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Details</th>
+          <td mat-cell *matCellDef="let details">
+            <button class="btna" mat-icon-button color="basic"
+              (click)="openLeaveDetails(details)"><mat-icon>details</mat-icon></button>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="50" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-tab>
+  <mat-tab label="Denied">
+    <div class="table-container">
+      <table mat-table [dataSource]="deniedLeavesDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="dateSubmitted">
+          <th mat-header-cell *matHeaderCellDef> Date submitted </th>
+          <td mat-cell *matCellDef="let details"> {{details.dateSubmitted}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="leaveStartDate">
+          <th mat-header-cell *matHeaderCellDef> Requested Start Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveStartDate}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="leaveEndDate">
+          <th mat-header-cell *matHeaderCellDef> Requested End Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveEndDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef> Reason </th>
+          <td mat-cell *matCellDef="let details"> {{details.reason}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let details"> {{details.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef>Details</th>
+          <td mat-cell *matCellDef="let details">
+            <button class="btna" mat-icon-button color="basic"
+              (click)="openLeaveDetails(details)"><mat-icon>details</mat-icon></button>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="50" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-tab>
+  <mat-tab label="Cancelled">
+    <div class="table-container">
+      <table mat-table [dataSource]="cancelledLeavesDataSource" class="mat-elevation-z8" matSort>
+
+        <ng-container matColumnDef="dateSubmitted">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date submitted </th>
+          <td mat-cell *matCellDef="let details"> {{details.dateSubmitted}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="leaveStartDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Requested Start Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveStartDate}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="leaveEndDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Requested End Date </th>
+          <td mat-cell *matCellDef="let details"> {{details.leaveEndDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reason">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason </th>
+          <td mat-cell *matCellDef="let details"> {{details.reason}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+          <td mat-cell *matCellDef="let details"> {{details.status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Details</th>
+          <td mat-cell *matCellDef="let details">
+            <button class="btna" mat-icon-button color="basic"
+              (click)="openLeaveDetails(details)"><mat-icon>details</mat-icon></button>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator #cancelledPaginator [length]="50" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </mat-tab>
+</mat-tab-group>

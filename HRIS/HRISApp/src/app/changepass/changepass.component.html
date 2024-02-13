@@ -1,0 +1,13 @@
+
+
+<form [formGroup]="passwordDetails" (ngSubmit)="changepass()">
+<mat-form-field class="input-field">
+    <input matInput formControlName="password" type="password" placeholder="New Password">
+  </mat-form-field>
+
+  <mat-form-field class="input-field">
+    <input matInput formControlName="repassword" type="password" placeholder="Re-Enter New Password">
+  </mat-form-field>
+  <button mat-raised-button color="primary" class="login-button" type="submit">Login</button>
+  <button mat-raised-button class="login-button">Cancel</button>
+</form>

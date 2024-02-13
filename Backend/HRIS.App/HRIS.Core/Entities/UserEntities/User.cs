@@ -14,7 +14,7 @@ namespace HRIS.Core.Entities.UserEntities
 
         public string UserName { get; set; }
 
-        public string Password { get; set; }
+        public string Password { get; set; } 
 
         public int EmployeeNumber { get; set; }
 
@@ -23,6 +23,10 @@ namespace HRIS.Core.Entities.UserEntities
         public string userType { get; set; }
 
         public Guid EmployeeId { get; set; }
+
+        public string employeeName { get; set; }
+
+        public string Department { get; set; }
 
         public EmployeeDetails employeeDetails { get; set; }
 

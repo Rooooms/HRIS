@@ -4,6 +4,7 @@ using HRIS.Core.Interfaces.Services.User_Service;
 using HRIS.Core.Models.Requests;
 using HRIS.Core.Models.Requests.Leave_Request;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace HRIS.App.Modules.Leave_Module
@@ -49,6 +50,15 @@ namespace HRIS.App.Modules.Leave_Module
                 }
             });
 
+            group.MapGet("/department", async ( ILeaveService leaveService, string department) => {
+
+                var leave = await leaveService.GetLeavesByDepartment(department);
+
+                if (leave == null) return Results.NotFound();
+
+                return Results.Ok(leave);
+            });
+
 
 
 
@@ -60,18 +70,19 @@ namespace HRIS.App.Modules.Leave_Module
                 
                     Console.WriteLine("New Leave", newLeave);
                     return Results.Created($"api/Leave/{newLeave.Id}", newLeave);
-                
+
                 //else
                 //{
                 //    // Handle the case where leave creation failed
                 //    return Results.BadRequest("Failed to create leave");
                 //}
             });
-            //group.MapPut("/{id:Guid}", async (Guid id, LeaveRequest request, ILeaveService leaveService) => {
+            group.MapPut("/{id:Guid}", async (Guid id, LeaveRequest request, ILeaveService leaveService) =>
+            {
 
-            //    var leave = await leaveService.Update(id, request);
-            //    return Results.Ok(leave);
-            //});
+                var leave = await leaveService.Update(id, request);
+                return Results.Ok(leave);
+            });
             group.MapDelete("/{id:Guid}", async (Guid id, ILeaveService leaveService) =>
             {
                 var success = await leaveService.Delete(id);

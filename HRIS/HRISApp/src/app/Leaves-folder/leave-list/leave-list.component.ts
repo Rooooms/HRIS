@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeavesService } from '../../Services/leaves-service/leaves.service';
 import { MaterialModule } from '../../material/material.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { MatDialog } from '@angular/material/dialog';
 import { LeavesDetailsComponent } from '../leaves-details/leaves-details.component';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-leave-list',
@@ -21,6 +23,8 @@ import { LeavesDetailsComponent } from '../leaves-details/leaves-details.compone
 export class LeaveListComponent implements OnInit{
   selected?: any;
   newval:any[]=[];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   dataSource!: MatTableDataSource<any>;
   constructor(private leaveService : LeavesService, private datePipe: DatePipe, private leavesFb: FormBuilder,public dialog: MatDialog){
@@ -32,10 +36,6 @@ export class LeaveListComponent implements OnInit{
 
   ngOnInit(): void {
     this.getLeaveList();
-
-   
-
-    
   }
 
 
@@ -56,6 +56,8 @@ export class LeaveListComponent implements OnInit{
           });
   
           this.dataSource = new MatTableDataSource(val);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
           
         
         } else {

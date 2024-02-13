@@ -19,6 +19,7 @@ namespace HRIS.Core.Interfaces.Repositories.Leaves_Repositories
 
         Task<int> SaveChangesAysnc();
         Task<List<LeaveEntities>> GetLeavesByEmployeeNumber(int employeeNumber);
+        Task<List<LeaveEntities>> GetLeavesByDepartment(string department);
 
 
     }

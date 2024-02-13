@@ -67,19 +67,26 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
   // }
 
   login() {
-
     if (this.loginForm.valid) {
       this.userService.login(this.loginForm.value).subscribe(
         (res: any) => {
           console.log('Login successful', res.token);
           this.loginForm.reset();
           this.userService.handleLoginSuccess(res.token);
+          const tokenPayload = this.userService.decodeToken();
+          this.userService.setRole(tokenPayload.role);
           console.log('Token stored:', localStorage.getItem('token'));
           this.coreService.openSnackBar('Login Successfully!')
 
           
-          this.getuserinfo();
-          this.router.navigate(['Dashboard']);
+          if (res.isTemporaryPassword) {
+            // Redirect to change password page
+            this.getuserinfo();
+            this.router.navigate(['changepass']);
+          } else {
+            this.getuserinfo();
+            this.router.navigate(['Dashboard']);
+          }
         },
         (err: any) => {
           console.log('Login error', err);
@@ -106,6 +113,7 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
         }
     });
 }
+
   
   
   

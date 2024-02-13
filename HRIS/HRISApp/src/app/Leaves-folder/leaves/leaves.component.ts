@@ -22,7 +22,7 @@ export class LeavesComponent {
       
       id: '',
       userId: '',
-      employeeId: '',
+      employeeId: '', 
       employeeName: '',
       employeeNumber: 0,
       userLevel: 0,
@@ -37,7 +37,7 @@ export class LeavesComponent {
       credit: 0,
       resOfCancel: null
   })
-  }
+}
 
 
   onformSubmit(){
@@ -47,6 +47,7 @@ export class LeavesComponent {
             if (val) {
                 console.log('Leave', val);
                 this.coreService.openSnackBar('Request Successfully');
+                this.leavelist.reset();
             } else {
                 console.error('Invalid response from the server.');
             }

@@ -48,5 +48,10 @@ namespace HRIS.Data.Repositories.LeaveRepository
         {
             return await _context.Leaves.Where(leave => leave.EmployeeNumber == employeeNumber).ToListAsync();
         }
+
+        public async Task<List<LeaveEntities>> GetLeavesByDepartment(string department)
+        {
+            return await _context.Leaves.Where(leave => leave.Department == department).ToListAsync();
+        }
     }
 }

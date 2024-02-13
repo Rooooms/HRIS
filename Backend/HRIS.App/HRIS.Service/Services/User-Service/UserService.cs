@@ -5,6 +5,7 @@ using HRIS.Core.Interfaces.Repositories.UserRepository;
 using HRIS.Core.Interfaces.Services.User_Service;
 using HRIS.Core.Models.Requests.User_Request;
 using HRIS.Core.Models.Responses;
+using HRIS.Core.Models.Responses.Leave_Response;
 using HRIS.Core.Models.Responses.User_Response;
 using HRIS.Data;
 using Mapster;
@@ -83,9 +84,14 @@ namespace HRIS.Service.Services.User_Service
             return userDto;
         }
 
-        public Task<UserResponse> GetById(Guid id)
+        public async Task<UserResponse> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _user.GetById(id);
+
+
+            var userDto = user?.Adapt<UserResponse>();
+
+            return userDto;
         }
 
 
@@ -101,86 +107,45 @@ namespace HRIS.Service.Services.User_Service
 
             var user = await _context.User.FirstOrDefaultAsync(x => x.EmployeeNumber == request.EmployeeNumber);
 
-           
-
             if (user == null) return null;
 
             if (!PasswordHasher.VerifyPassword(request.Password, user.Password))
                 return null;
-            user.token = CreateJwt(user);
+
             var loginResponse = user.Adapt<LoginResponse>();
 
-            
+            // Check if the password is the temporary password
+            loginResponse.IsTemporaryPassword = request.Password == "Temp_Password01";
+
+            loginResponse.token = CreateJwt(user);
+
             return loginResponse;
         }
-        //public async Task<(string Token, User User)?> LoginUser(LoginRequest request, HttpContext context)
-        //{
-        //    var user = await _user.GetUserByEmpNumber(request.EmployeeNumber);
-        //    if (user == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    else if (!VerifyPasswordHash(request.Password, user.PasswordSalt, user.PasswordHash))
-        //    {
-        //        return null;
-        //    }
-
-        //    else
-        //    {
-        //        string UserType = string.Empty;
-        //        if (user.userType == Core.Entities.UserEntities.UserType.Admin)
-        //        {
-        //            UserType = "Admin";
-        //        }
-        //        else if (user.userType == Core.Entities.UserEntities.UserType.Manager)
-        //        {
-        //            UserType = "Manager";
-        //        }
-        //        else
-        //        {
-        //            UserType = "Staff";
-        //        }
-
-        //        var claims = new[]
-        //        {
-        //    new Claim(ClaimTypes.Name, user.EmployeeNumber.ToString()),
-        //    new Claim(ClaimTypes.Role, UserType)
-        //};
-
-        //        var issuer_audience = "http//localhost:5041/";
-        //        var key = "b259c9a6f7b4dc09e5e36169f3e46c35e7dc776a10a14b609fc29e6eefb125c2";
-        //        var token = new JwtSecurityToken
-        //        (
-        //            issuer: issuer_audience,
-        //            audience: issuer_audience,
-        //            claims: claims,
-        //            expires: DateTime.UtcNow.AddDays(1),
-        //            notBefore: DateTime.UtcNow,
-        //            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)), SecurityAlgorithms.HmacSha256)
-        //        );
-
-        //        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-
-        //        _httpContextAccessor.HttpContext.Session.SetString("UserId", user.Id.ToString());
-        //        _httpContextAccessor.HttpContext.Session.SetString("employeeId", user.EmployeeId.ToString());
-        //        _httpContextAccessor.HttpContext.Session.SetString("UserName", user.UserName);
-        //        _httpContextAccessor.HttpContext.Session.SetString("employeeNumber", user.EmployeeNumber.ToString());
-        //        _httpContextAccessor.HttpContext.Session.SetString("UserType", user.userType.ToString());
-        //        _httpContextAccessor.HttpContext.Session.SetString("Token", tokenString);
-
-        //        context.Request.Headers.Add("Authorization", $"Bearer {tokenString}");
-
-        //        return (tokenString, user);
-        //    }
-        //}
-
 
         public Task Logout()
         {
             throw new NotImplementedException();
         }
 
+        public async Task<UserResponse> Update (Guid id, UpdateUserRequest request)
+        {
+
+            var employeeDetails = await _employeeDetailsRepository.GetByEmployee(request.EmployeeNumber);
+            if (employeeDetails == null) return null;
+
+            var user = await _user.GetById(id);
+
+            if (user == null) return null;
+
+            user.employeeDetails = employeeDetails;
+            user.EmployeeId=employeeDetails.Id;
+            user.employeeName = user.employeeName;
+            user.Department = user.Department;
+            user.Password= PasswordHasher.HashPassword(request.Password);
+
+            await _user.SaveChangesAysnc();
+            return user.Adapt<UserResponse>();
+        }
         public async Task<UserResponse> RegisterUser(UserRequest request)
         {
             var employee = await _employeeDetailsRepository.GetByEmployee(request.EmployeeNumber);
@@ -192,15 +157,18 @@ namespace HRIS.Service.Services.User_Service
                 return null; // or return a bad request message
             }
 
-            var passMessage = CheckPasswordStrength(request.Password);
+            var passMessage = CheckPasswordStrength("Temp_Password01");
             if (!string.IsNullOrEmpty(passMessage))
                 return null;
 
             var user = request.Adapt<User>();
+           
             user.EmployeeId = employee.Id;
             user.EmployeeNumber = employee.EmployeeNumber;
-            user.Password = PasswordHasher.HashPassword(request.Password);
-            user.userType = "Admin";
+            user.employeeName = employee.FName + " " + employee.LName;
+            user.Department = employee.Department;
+            user.Password = PasswordHasher.HashPassword("Temp_Password01");
+           
 
             _user.Add(user);
 
@@ -210,35 +178,6 @@ namespace HRIS.Service.Services.User_Service
             return userDto;
 
         }
-
-        private void CreatePasswordHash(string password, out byte[] PasswordHash, out byte[] PasswordSalt) 
-        { 
-            using (var hmac = new HMACSHA512())
-            {
-                PasswordSalt = hmac.Key;
-                PasswordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-        }
-
-        //private bool VerifyPasswordHash(string password, byte[] passwordSalt, byte[] PasswordHash) 
-        //{ 
-        //    using(var hmac = new HMACSHA512(passwordSalt))
-        //    {
-        //        var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-        //        return computedHash.SequenceEqual(PasswordHash);
-        //    }
-        //}
-
-        //private string CreateJwt(User user)
-        //{
-        //    var jwtTokenHandler = new JwtSecurityTokenHandler();
-        //    var key = "b259c9a6f7b4dc09e5e36169f3e46c35e7dc776a10a14b609fc29e6eefb125c2";
-        //    var identity =  new ClaimsIdentity(new Claim[]
-        //    {
-        //        new Claim(ClaimTypes.Name, user.EmployeeNumber.ToString()),
-        //        new Claim(ClaimTypes.Role, UserType)
-        //    })
-        //}
 
         private async Task<bool> CheckUserNameExist(int employeeNumber)
         {
@@ -303,8 +242,10 @@ namespace HRIS.Service.Services.User_Service
                         return new CheckLoggedResponse(); // Initialize an empty response or handle as needed
                     }
 
-                    var checkLoggedResponse = userDetails.Adapt<CheckLoggedResponse>();
+                    var empDetails = await _employeeDetailsRepository.GetById(userDetails.EmployeeId);
 
+                    var checkLoggedResponse = userDetails.Adapt<CheckLoggedResponse>();
+                    checkLoggedResponse.Department = empDetails.Department;
                     // Now you have the user details, proceed with your business logic
                     // You can return the user details or process them further
 

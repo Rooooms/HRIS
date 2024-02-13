@@ -1,0 +1,42 @@
+<div class="header">
+    <h1>Leave Details : </h1>
+</div>
+
+<div class="ng-container">
+    <div class="row">
+        <div fxFlex="40%">
+            <mat-card class="card">
+                <p><strong>Company:</strong> {{ data.company }}</p>
+                <p><strong>Branch:</strong> {{ data.branch }}</p>
+                <p><strong>Department</strong> {{ data.department }}</p>
+                <p><strong>Employee Name:</strong> {{ data.employeeName }}</p>
+                <p><strong>Employee Number:</strong> {{ data.employeeNumber }}</p>
+            </mat-card>
+        </div>
+        <div fxFlex="60%">
+            <mat-card class="form-card">
+                <form [formGroup]="leavelist" (ngSubmit)="onFormSubmit()">
+
+                    <mat-form-field class="full-width">
+                        <mat-label>Status</mat-label>
+                        <mat-select formControlName="status">
+                            <mat-option value="Requested">Requested</mat-option>
+                          <mat-option value="Approved">Approved</mat-option>
+                          <mat-option value="Denied">Denied</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      
+                        <mat-form-field class="full-width">
+                          <mat-label>Reason of Cancellation</mat-label>
+                          <textarea matInput formControlName="resOfCancel"></textarea>
+                          </mat-form-field>
+                      
+                      
+
+                      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                        <button mat-raised-button type="submit" color="primary">Ok</button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

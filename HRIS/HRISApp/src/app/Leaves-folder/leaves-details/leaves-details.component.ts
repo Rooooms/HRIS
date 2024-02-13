@@ -69,16 +69,6 @@ leavelist:FormGroup
 
   onFormSubmit() {
     if (this.leavelist.valid) {
-      // Create a copy of the data to avoid modifying the original data
-      const leave = { ...this.data };
-  
-      // Update the properties based on the form values
-      leave.leaveStartDate = this.datePipe.transform(this.leavelist.get('leaveStartDate')?.value, 'yyyy-MM-dd');
-      leave.leaveEndDate = this.datePipe.transform(this.leavelist.get('leaveEndDate')?.value, 'yyyy-MM-dd');
-      leave.status = this.leavelist.get('status')?.value;
-      leave.reason = this.leavelist.get('reason')?.value;
-  
-      console.log('Updated Leave Object:', leave);
   
     // Inside your Angular component where you call the service
 this.leaveService.updateLeaves(this.data.id, this.leavelist.value).subscribe({

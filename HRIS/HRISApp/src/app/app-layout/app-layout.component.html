@@ -1,16 +1,69 @@
 <!-- app-layout.component.html -->
-<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav class="sidenav">
       <mat-nav-list>
-        <a mat-list-item routerLink="/Dashboard">Home</a>
-        <a mat-list-item routerLink="employee-list">Employee List </a>
-        <a mat-list-item routerLink="book">Book </a>
-        <a mat-list-item routerLink="leave">Leave </a>
-
-        <!-- Add more sidebar links as needed -->
+        <a mat-list-item routerLink="/Dashboard"><mat-icon class="icon">home</mat-icon>Home</a>
+        <ng-container *ngIf="role === 'Admin'">
+          <a mat-list-item routerLink="employee-list"><mat-icon class="icon">work</mat-icon>Employee List</a>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  User
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="userlist">User List</a>
+              
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Leaves
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="leave">Request Leave</a>
+              <a mat-list-item routerLink="leavelist">Leave History</a>
+              <a mat-list-item routerLink="manageleave">Manage Leave</a>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
+        <ng-container *ngIf="role == 'Manager'">
+          
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Leaves
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="leave">Request Leave</a>
+              <a mat-list-item routerLink="leavelist">Leave History</a>
+              <a mat-list-item routerLink="manageleave">Manage Leave</a>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
+        <ng-container *ngIf="role == 'Staff'">
+          
+          <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Leaves
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="leave">Request Leave</a>
+              <a mat-list-item routerLink="leavelist">Leave History</a>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
       </mat-nav-list>
     </mat-sidenav>
-  
     <mat-sidenav-content>
       <mat-toolbar color="primary">
         <button mat-icon-button (click)="sidenav.toggle()">
@@ -28,4 +81,5 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
   

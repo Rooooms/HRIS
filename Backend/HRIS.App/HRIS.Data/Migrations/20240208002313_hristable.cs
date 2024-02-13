@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HRIS.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class HRISTable : Migration
+    public partial class hristable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -392,7 +392,9 @@ namespace HRIS.Data.Migrations
                     EmployeeNumber = table.Column<int>(type: "int", nullable: false),
                     token = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     userType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    employeeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -412,19 +414,19 @@ namespace HRIS.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmployeeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmployeeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmployeeNumber = table.Column<int>(type: "int", nullable: false),
                     UserLevel = table.Column<int>(type: "int", nullable: false),
-                    Company = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Branch = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Company = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Branch = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LeaveStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LeaveEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateSubmitted = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastSubmissionMonth = table.Column<int>(type: "int", nullable: false),
                     LastSubmissionYear = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Credit = table.Column<double>(type: "float", nullable: false),
                     ResOfCancel = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

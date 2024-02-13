@@ -25,6 +25,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -54,6 +56,8 @@ import {MatMenuModule} from '@angular/material/menu';
     RouterOutlet,
     RouterModule,
     MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule
     
     
     

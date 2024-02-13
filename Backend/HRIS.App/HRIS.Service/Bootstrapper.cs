@@ -1,5 +1,6 @@
 ﻿using HRIS.Core.Entities.UserEntities;
 using HRIS.Core.Interfaces.Services;
+using HRIS.Core.Interfaces.Services.EmailSender;
 using HRIS.Core.Interfaces.Services.Leave_Service;
 using HRIS.Core.Interfaces.Services.User_Service;
 using HRIS.Service.Services;
@@ -34,6 +35,7 @@ namespace HRIS.Service
             services.AddTransient<IApexMerchService, ApexMerchService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ILeaveService, LeaveService>();
+            services.AddTransient<IEmailService,EmailService>();
 
             //services.AddTransient<JwtMiddleware>(sp =>
             //{

@@ -1,0 +1,19 @@
+.full-width{
+    width: 95%;
+}
+.form-full-width{
+    width: 100%;
+}
+.dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    
+  }
+  
+  .card {
+    width: 90%; /* Adjust as needed */
+    align-items: center;
+    padding:30px
+  }

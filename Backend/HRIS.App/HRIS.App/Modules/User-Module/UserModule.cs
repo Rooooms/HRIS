@@ -2,6 +2,7 @@
 using HRIS.Core.Interfaces.Services.Leave_Service;
 using HRIS.Core.Interfaces.Services.User_Service;
 using HRIS.Core.Models.Requests;
+using HRIS.Core.Models.Requests.Leave_Request;
 using HRIS.Core.Models.Requests.User_Request;
 using HRIS.Service.Services.User_Service;
 using Microsoft.AspNetCore.Authorization;
@@ -16,6 +17,14 @@ namespace HRIS.App.Modules.User_Module
             var group = app.MapGroup("/api/Users");
 
             group.MapGet("/", [Authorize] async (IUserService userService) => Results.Ok(await userService.GetAll()));
+            group.MapGet("/{id:Guid}", async (Guid id, IUserService userService) => {
+
+                var user = await userService.GetById(id);
+
+                if (user == null) return Results.NotFound();
+
+                return Results.Ok(user);
+            });
 
             group.MapPost("/", async (UserRequest request, IUserService userService) =>
             {
@@ -121,6 +130,15 @@ namespace HRIS.App.Modules.User_Module
             {
                 await usersService.Logout();
                 return Results.Ok();
+            });
+
+            group.MapPut("/{id:Guid}", async (Guid id, UpdateUserRequest request, IUserService usersService) =>
+            {
+
+                var user = await usersService.Update(id, request);
+                if (user != null) return Results.Ok(user);
+                else return Results.NotFound("Not Found");
+
             });
 
         }

@@ -20,5 +20,8 @@ namespace HRIS.Core.Interfaces.Repositories.UserRepository
         Task<int> SaveChangesAysnc();
 
         Task<User?> GetUserByEmpNumber(int employeeNumber);
+        Task<User?> GetUserByDepartment(string department);
+
+        Task<User?> GetByUserType(string userType);
     }
 }

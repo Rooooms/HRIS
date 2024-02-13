@@ -13,8 +13,8 @@ import { HttpHeaders } from '@angular/common/http';
   standalone: true,
   imports: [
     DataPersonalComponent,
-    MaterialModule,
-    EmploymentComponent
+    EmploymentComponent,
+    MaterialModule
   ],
   templateUrl: './add201file.component.html',
   styleUrls: ['./add201file.component.css'] 

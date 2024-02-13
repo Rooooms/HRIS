@@ -44,6 +44,16 @@ namespace HRIS.Data.Repositories.UserRepository
             return _context.User.FirstOrDefaultAsync(p => p.EmployeeNumber == employeeNumber);
         }
 
+        public Task<User?> GetByUserType (string userType)
+        {
+            return _context.User.FirstOrDefaultAsync(p=>p.userType == userType);
+        }
+
+        public Task<User?> GetUserByDepartment(string department)
+        {
+            return _context.User.FirstOrDefaultAsync(p => p.Department == department);
+        }
+
         public Task<int> SaveChangesAysnc()
         {
             return _context.SaveChangesAsync();

@@ -31,4 +31,8 @@ updateLeaves(id: string, data: any): Observable<any> {
     );
 }
 
+getLeaveByDepartment(department:any): Observable<any>{
+  return this.http.get(`http://localhost:5041/api/Leave/department?department=${department}`)
+}
+
 }

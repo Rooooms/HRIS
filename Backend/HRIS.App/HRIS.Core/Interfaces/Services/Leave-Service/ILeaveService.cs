@@ -18,10 +18,10 @@ namespace HRIS.Core.Interfaces.Services.Leave_Service
         Task<LeaveResponse?> GetById(Guid id);
 
         Task<List<LeaveResponse>> GetLeavesByEmployeeNumber(int employeeNumber);
-
+        Task<List<LeaveResponse>> GetLeavesByDepartment(string department);
         Task<LeaveResponse> Create(HttpContext httpContext, LeaveRequest request);
 
-        //Task<LeaveResponse> Update(Guid id, LeaveRequest request);
+        Task<LeaveResponse> Update(Guid id, LeaveRequest request);
 
         Task<bool> Delete(Guid id);
     }

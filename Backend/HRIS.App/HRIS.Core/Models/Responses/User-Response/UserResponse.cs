@@ -19,6 +19,10 @@ namespace HRIS.Core.Models.Responses.User_Response
         public int EmployeeNumber { get; set; }
 
         public string userType { get; set; }
+
+        public string employeeName { get; set; }
+        public string Department {  get; set; }
+        public Guid EmployeeId { get; set; }
     }
 
     public class CheckLoggedResponse
@@ -27,6 +31,11 @@ namespace HRIS.Core.Models.Responses.User_Response
         public string UserName { get; set; }
         public int EmployeeNumber { get; set; }
         public string userType { get; set; }
+
+        public string Password { get; set; }
+
+        public string Department {  get; set; }
+        public Guid EmployeeId { get; set; }
        
     }
 
@@ -34,6 +43,8 @@ namespace HRIS.Core.Models.Responses.User_Response
     {
         
         public string token { get; set; }
+        public bool IsTemporaryPassword { get; set; }
+
     }
 
     public class LoginResponseResult
